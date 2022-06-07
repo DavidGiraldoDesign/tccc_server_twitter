@@ -15,15 +15,13 @@ serverHTTP.use(cors({
 //ngrok http 5050
 
 serverHTTP.post('/last_tweet', (req, res) => {
-    console.log('Recieved: ' + req.body.user + ' from: ' + req.body.msn);
+    //console.log('Recieved: ' + req.body.user + ' from: ' + req.body.msn);
 
     (async () => {
         try {
             // Make request
             const response = await getRequest(req.body.user);
-            console.dir(response, {
-                depth: null
-            });
+            //console.dir(response, {depth: null});
             if (response.meta.result_count != 0) {
                 const lastTweet = {
                     text: response.data[0].text,
@@ -38,7 +36,7 @@ serverHTTP.post('/last_tweet', (req, res) => {
             }
 
         } catch (e) {
-            console.log(e);
+            //console.log(e);
             res.send({
                 status: 'error'
             })
@@ -47,5 +45,5 @@ serverHTTP.post('/last_tweet', (req, res) => {
 })
 
 serverHTTP.listen(PORT, (error) => {
-    console.log(`http://${IPaddress}:${PORT}`);
+    //console.log(`http://${IPaddress}:${PORT}`);
 })
