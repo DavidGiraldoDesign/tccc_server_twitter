@@ -4,7 +4,7 @@ const cors = require('cors')
 const getRequest = require('./twitter')
 
 const serverHTTP = express();
-const PORT = 5050
+const PORT = process.env.PORT || 5050
 const IPaddress = os.networkInterfaces().en0[1].address;
 
 serverHTTP.use(express.json());
