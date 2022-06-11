@@ -4,8 +4,8 @@ const cors = require('cors')
 const getRequest = require('./twitter')
 
 const serverHTTP = express();
-const PORT = process.env.PORT || 5050
-const IPaddress = os.networkInterfaces().en0[1].address;
+const PORT = process.env.PORT
+//const IPaddress = os.networkInterfaces().en0[1].address;
 
 serverHTTP.use(express.json());
 serverHTTP.use(cors({
@@ -13,6 +13,9 @@ serverHTTP.use(cors({
 }))
 
 //ngrok http 5050
+serverHTTP.get('/', (req,res) =>{
+    res.send('Hello world!')
+})
 
 serverHTTP.post('/last_tweet', (req, res) => {
     //console.log('Recieved: ' + req.body.user + ' from: ' + req.body.msn);
